@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Practica 5</title>
+</head>
+<body>
+    <h1>Tabla de multiplicar</h1>
+    <label><big>Tabla: </big></label>
+    <input type="number" id="num" />
+    <button type="button" onclick="sacarTabla()">Sacar tabla</button>
+    <div id="resul"></div>
+    <script type="text/javascript">
+        function sacarTabla() {
+            var num = parseInt(document.getElementById("num").value);
+            var div = document.getElementById("resul");
+            var aux = "<table border=2><tr bgcolor=grey><th>Operación</th><th>Resultado</th></tr>";
+            for (var i = 1; i <= 10; i++) {
+                var multi = num * i;
+                //console.log(multi);
+                aux += "<tr><td bgcolor=lightblue>" + num + " x " + i + "</td><td bgcolor=lightgreen><b>" + multi + "</b></td></tr>";
+                //console.log(aux);
+            }
+            aux += "</table>";
+            div.innerHTML = aux;
+        }
+    </script>
+</body>
+</html>

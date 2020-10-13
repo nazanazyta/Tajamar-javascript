@@ -1,0 +1,102 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Práctica 8</title>
+    <style>
+        button {
+            width: 100%;
+        }
+        input[type=text] {
+            width: 80%;
+            padding: 16px 32px;
+            font-size: 20px;
+            background: #ccc;
+        }
+        button[type=button] {
+            background-color: #468ebe;
+            border: none;
+            color: white;
+            padding: 16px 32px;
+            font-size: 16px;
+            margin: 4px 2px;
+        }
+        button[type=button]:hover{
+          background-color: #333;
+        }
+    </style>
+</head>
+<body align="center">
+    <h1>Calculadora</h1>
+
+    <table align="center">
+        <tr>
+            <td colspan="4"><input type="text" id="resultado" value="" /></td>
+        </tr>
+        <tr>
+            <td><button type="button" name="numero" value="1">1</button></td>
+            <td><button type="button" name="numero" value="2">2</button></td>
+            <td><button type="button" name="numero" value="3">3</button></td>
+            <td><button type="button" name="signo" value="/">/</button></td>
+        </tr>
+        <tr>
+            <td><button type="button" name="numero" value="4">4</button></td>
+            <td><button type="button" name="numero" value="5">5</button></td>
+            <td><button type="button" name="numero" value="6">6</button></td>
+            <td><button type="button" name="signo" value="*">*</button></td>
+        </tr>
+        <tr>
+            <td><button type="button" name="numero" value="7">7</button></td>
+            <td><button type="button" name="numero" value="8">8</button></td>
+            <td><button type="button" name="numero" value="9">9</button></td>
+            <td><button type="button" name="signo" value="-">-</button></td>
+        </tr>
+        <tr>
+            <td colspan="2"><button type="button" name="numero" value="0">0</button></td>
+            <td><button type="button" id="igual">=</button></td>
+            <td><button type="button" name="signo" value="+">+</button></td>
+        </tr>
+    </table>
+    <script type="text/javascript">
+        var resultado = document.getElementById("resultado");
+        var num1;
+        var operador;
+        window.onload = function () {
+            var numeros = document.getElementsByName("numero");
+            var signos = document.getElementsByName("signo");
+            var igual = document.getElementById("igual");
+            for (var numero of numeros) {
+                numero.addEventListener("click", function () {
+                    resultado.value += this.value;
+                });
+            }
+            for (var signo of signos) {
+                signo.addEventListener("click", function () {
+                    num1 = parseInt(resultado.value);
+                    operador = this.value;
+                    resultado.value = "";
+                });
+            }
+            igual.addEventListener("click", function () {
+                var num2 = parseInt(resultado.value);
+                var resul = 0;
+                switch (operador) {
+                    case "+":
+                        resul = num1 + num2;
+                        break;
+                    case "-":
+                        resul = num1 - num2;
+                        break;
+                    case "*":
+                        resul = num1 * num2;
+                        break;
+                    case "/":
+                        resul = num1 / num2;
+                        break;
+                }
+                resultado.value = resul
+            });
+        }
+    </script>
+</body>
+</html>

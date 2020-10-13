@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Eventos delegados</title>
+</head>
+<body>
+    <h1>Eventos delegados</h1>
+    <h3 style="color:fuchsia" id="resu"></h3>
+    <button type="button" onclick="asociarEvento()">Asociar eventos</button>
+    <button type="button" id="boton">Realizar acciones</button>
+    <script type="text/javascript">
+        //si deseamos agregar eventos al iniciar la página, debemos hacerlo en window.on
+        window.onload = function () {
+            var boton = document.getElementById("boton");
+            boton.addEventListener("click", function () {
+                alert("Mensaje cargado...");
+            });
+        }
+        //vamos a crear una variable global donde incrementaremos su valor cada vez que asociemos el evento
+        //así veremos el número de asociaciones y el número de mensajes que mostremos
+        //diferenciar onclick del listener
+        var contador = 0;
+        function asociarEvento() {
+            contador += 1;
+            var resu = document.getElementById("resu");
+            resu.innerText = "Eventos asociados: " + contador;
+            var boton = document.getElementById("boton");
+            /*****/
+            //empezamos con onclick y funciones externas
+            //no hay pila de llamadas y se quedará con la última acción
+            //this: devuelve el botón asociado
+            //boton.onclick = mostrarMensaje;
+            //boton.onclick = mostrarMensaje2;
+            /******/
+            //utilizamos onclick con funciones anónimas
+            //no hay pila de llamadas y se quedará con la última acción
+            //this: devuelve el botón asociado
+            //boton.onclick = function () { alert("Anónima 1"); }
+            //boton.onclick = function () { alert("Anónima 2" + this); }
+            /******/
+            //listener con funciones externas
+            //si son funciones diferentes, existe pila de llamadas
+            //this: devuelve el botón asociado
+            //boton.addEventListener("click", mostrarMensaje);
+            //boton.addEventListener("click", mostrarMensaje2);
+            /******/
+            //listener con funciones anónimas
+            //existe pila de llamadas en todo momento porque no tienen nombre las funciones/eventos
+            //this: devuelve el botón asociado
+            boton.addEventListener("click", function () {
+                alert("Anónima 1" + this);
+            });
+        }
+        function mostrarMensaje() { alert("Mensaje 1"); }
+        function mostrarMensaje2() { alert("Mensaje 2" + this); }
+    </script>
+</body>
+</html>

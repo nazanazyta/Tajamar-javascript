@@ -1,0 +1,104 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Practica 2</title>
+</head>
+<body>
+    <h1>Comparar 3 múmeros</h1>
+    <label>Primer número: </label>
+    <input type="number" id="uno" />
+    <br />
+    <label>Segundo número: </label>
+    <input type="number" id="dos" />
+    <br />
+    <label>Tercer número: </label>
+    <input type="number" id="tres" />
+    <br />
+    <button type="button" onclick="comparar()">Comparar números</button>
+    <h1 id="resu"></h1>
+    <script type="text/javascript">
+        function comparar() {
+            var a = parseInt(document.getElementById("uno").value);
+            var b = parseInt(document.getElementById("dos").value);
+            var c = parseInt(document.getElementById("tres").value);
+            resu = document.getElementById("resu");
+            //var mayor = Math.max(a, b, c);
+            //var menor = Math.min(a, b, c);
+            /*if (a < b && b < c) {
+                //ABC
+                console.log("ABC");
+                resu.innerText = a + " < " + b + " < " + c;
+            } else if (a < c && c < b) {
+                //ACB
+                console.log("ACB");
+                resu.innerText = a + " < " + c + " < " + b;
+            } else if (b < c && c < a) {
+                //BAC
+                console.log("BAC");
+                resu.innerText = b + " < " + a + " < " + c;
+            } else if (b < a && a < c) {
+                //BCA
+                console.log("BCA");
+                resu.innerText = b + " < " + c + " < " + a;
+            } else if (c < a && a < b) {
+                //CAB
+                console.log("CAB");
+                resu.innerText = c + " < " + a + " < " + b;
+            } else {
+                //CBA
+                console.log("CBA");
+                resu.innerText = c + " < " + b + " < " + a;
+            }*/
+            var mayor = 0;
+            if (a > b && a > c) {
+                mayor = a;
+            } else if (b > a && b > c) {
+                mayor = b;
+            } else {
+                mayor = c;
+            }
+            var menor = 0;
+            if (a < b && a < c) {
+                menor = a;
+            } else if (b < a && b < c) {
+                menor = b;
+            } else {
+                menor = c;
+            }
+            var intermedio = (a + b + c) - menor - mayor;
+            resu.innerText = menor + " < " + intermedio + " < " + mayor;
+            resu.innerHTML += "<p>Mayor: " + mayor + "</p>";
+            resu.innerHTML += "<p>Menor: " + menor + "</p>";
+            resu.innerHTML += "<p>Intermedio: " + intermedio + "</p>";
+            /*if (a < b) {
+                if (b < c) {
+                    //ABC
+                    console.log("ABC");
+                    resu.innerText = a + " < " + b + " < " + c;
+                } else if (a < c) {
+                    //ACB
+                    console.log("ACB");
+                    resu.innerText = a + " < " + c + " < " + b;
+                } else {
+                    //CAB
+                    console.log("CAB");
+                    resu.innerText = c + " < " + a + " < " + b;
+                }
+            } else if (a < c) {
+                //BAC
+                console.log("BAC");
+                resu.innerText = b + " < " + a + " < " + c;
+            } else if (b < c) {
+                //BCA
+                console.log("BCA");
+                resu.innerText = b + " < " + c + " < " + a;
+            } else {
+                //CBA
+                console.log("CBA");
+                resu.innerText = c + " < " + b + " < " + a;
+            }*/
+        }
+    </script>
+</body>
+</html>

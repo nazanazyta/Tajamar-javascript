@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Practica 5</title>
+    <style>
+        img {
+            width: 200px;
+            height: 120px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Generar imágenes objetos</h1>
+    <form name="formulario">
+        <input type="range" id="rango" value="1" min="1" max="20" onchange="crearObjetos()"/>
+        <span id="valor"></span>
+    </form>
+    <hr />
+    <div id="imagenes"></div>
+    <script type="text/javascript">
+        function crearObjetos() {
+            document.getElementById("imagenes").innerText = "";
+            var rango = document.getElementById("rango");
+            var valor = parseInt(rango.value);
+            document.getElementById("valor").innerText = valor;
+            for (var i = 0; i < valor; i++) {
+                var img = document.createElement("img");
+                img.src = "img/galgo1.jpg";
+                img.addEventListener("mouseover", function () {
+                    this.src = "img/galgo2.jpg";
+                });
+                img.addEventListener("click", function () {
+                    document.getElementById("imagenes").removeChild(this);
+                    //this.remove();
+                });
+                document.getElementById("imagenes").appendChild(img);
+            }
+        }
+    </script>
+</body>
+</html>

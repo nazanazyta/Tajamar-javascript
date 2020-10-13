@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Práctica Eventos 2</title>
+</head>
+<body>
+    <h1>Sumar botones con Array de DOM</h1>
+    <button type="button" name="boton">19</button>
+    <button type="button" name="boton">3</button>
+    <button type="button" name="boton">14</button>
+    <button type="button" name="boton">2</button>
+    <h1 id="res"></h1>
+    <script type="text/javascript">
+        var suma = 0;
+        var res = document.getElementById("res");
+        //window.addEventListener("load", function () {...});
+        window.onload = function () {
+            //capturamos todos los objetos que tengan el mismo name o tagname
+            var botones = document.getElementsByName("boton");
+            //var botones = document.getElementsByTagName("button");
+            //botones[0] --> numero 19
+            for (var i = 0; i < botones.length; i++) {
+                botones[i].addEventListener("click", function () {
+                    suma += parseInt(this.innerText);
+                    res.innerText = "La suma es: " + suma;
+                });
+            }
+
+            //recorremos todos los botones por referencia
+            //en JS existen dos bucles por referencia
+            //for..in   INDICES
+            /*for (var indice in botones) {
+                console.log("Indice: " + indice);
+                var boton = botones[indice];
+            }*/
+            //for..of   OBJETOS
+            /*for (var boton of botones) {
+                console.log(boton.innerText);
+            }*/
+        }
+    </script>
+</body>
+</html>

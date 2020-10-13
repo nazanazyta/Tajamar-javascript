@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Práctica String 1</title>
+</head>
+<body>
+    <h1>Validar mail</h1>
+    <label>Email: </label>
+    <input type="text" id="caja" />
+    <button type="button" onclick="validarMail()">Validar</button>
+    <div id="resu"></div>
+    <script type="text/javascript">
+        function validarMail() {
+            var mail = document.getElementById("caja").value;
+            var resu = document.getElementById("resu");
+            var aux = "";
+            //console.log(mail);
+            if (mail.indexOf('@') >= 0) {
+                //console.log("BIEN: Tiene @");
+                var ind = mail.indexOf('@');
+                if (mail.indexOf('@', ind+1) < 0) {
+                    //console.log("BIEN: Tiene SOLO una @");
+                    if (mail.charAt(0) != '@' && mail.charAt(mail.length - 1) != '@') {
+                        //console.log("BIEN: No tiene @ ni al principio ni al final");
+                        if (mail.lastIndexOf('.') > ind) {
+                            //console.log("BIEN: Tiene . después de la @");
+                            var ulti = mail.lastIndexOf('.');
+                            if ((mail.length - ulti - 1) < 5 && (mail.length - ulti - 1) > 1) {
+                                //console.log("BIEN: Dominio bien");
+                                aux += "<h2>TODO CORRECTO</h2>";
+                            } else {
+                                aux += "* El dominio debe tener de 2 a 4 caracteres<br/>";
+                            }
+                        } else {
+                            aux += "* No hay punto después del @<br/>";
+                        }
+                    } else {
+                        aux += "* Empieza o termina por @<br/>";
+                    }
+                } else {
+                    aux += "* Tiene más de una @<br/>";
+                }
+            } else {
+                aux += "* No hay @<br/>";
+            }
+            /*
+            //PACO
+            if (mail.indexOf("@") == -1) {
+                resu.innerHTML = "No existe @";
+            } else if (mail.startsWith("@") || mail.endsWith("@")) {
+                resu.innerHTML = "@ al inicio o al final";
+            } else if (mail.indexOf("@") != mail.lastIndexOf("@")) {
+                resu.innerHTML = "Tenemos más de una @";
+            } else if (mail.indexOf(".") == -1) {
+                resu.innerHTML = "No existe punto";
+            } else if (mail.lastIndexOf(".") < mail.indexOf("@")) {
+                resu.innerHTML = "No hay punto después de la @";
+            } else {
+                var ulti = mail.lastIndexOf('.') + 1;
+                var dominio = mail.substr(ulti);
+                if (dominio.length >= 2 && dominio.length <= 4) {
+                    resu.innerHTML = "Email correcto";
+                } else {
+                    resu.innerHTML = "Dominio debe tener entre 2 y 4 caracteres";
+                }
+            }*/
+            resu.innerHTML = aux;
+        }
+    </script>
+</body>
+</html>

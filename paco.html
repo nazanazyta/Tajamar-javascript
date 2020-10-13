@@ -1,0 +1,105 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        .impar {
+            background-color: fuchsia;
+        }
+
+        .par {
+            background-color: yellow;
+        }
+
+        /*input[type=number]:nth-of-type(odd) {
+            background-color: fuchsia;
+        }
+
+        input[type=number]:nth-of-type(even) {
+            background-color: yellow;
+        }*/
+    </style>
+
+
+    <script type="text/javascript">
+        window.onload = function () {
+            var cajas = document.getElementsByName("cajas");
+            var posicion = 1;
+            for (var caja of cajas) {
+                var aleat = parseInt((Math.random() * 50) + 1);
+                caja.value = aleat;
+                //PREGUNTAMOS POR LA POSICION DE LA CAJA EN EL RECORRIDO
+                if (posicion % 2 == 0) {
+                    //PAR
+                    caja.className = "par";
+                } else {
+                    //IMPAR
+                    caja.className = "impar";
+                }
+                posicion += 1;
+            }
+            var boton = document.getElementById("botonsumar");
+            boton.addEventListener("click", function () {
+                //QUE OPCION ESTA SELECCIONADA???
+                var opciones = document.formulario.seleccion;
+                var seleccion = opciones.value;
+                /*for (var opt of opciones) {
+                    if (opt.checked == true) {
+                        seleccion = opt.value;
+                    }
+                }*/
+                console.log(seleccion);
+                //RECUPERAR TODAS LAS CAJAS???
+                var cajas = document.getElementsByName("cajas");
+                //RECORRER CADA CAJA Y SUMAR SU VALUE
+                var suma = 0;
+                if (seleccion == "par") {
+                    for (var i = 0; i < cajas.length; i++) {
+                        if (i % 2 == 0) {
+                            suma += parseInt(cajas[i].value);
+                        }
+                    }
+                    document.getElementById("resultado").innerText = suma;
+                } else {
+                    for (var i = 0; i < cajas.length; i++) {
+                        if (i % 2 != 0) {
+                            suma += parseInt(cajas[i].value);
+                        }
+                    }
+                    document.getElementById("resultado").innerText = suma;
+                }
+                /*for (var caja of cajas) {
+                    //EXTRAEMOS EL VALOR DE LA CAJA
+                    var num = parseInt(caja.value);
+                    suma += num;
+                    console.log(suma);
+                }*/
+                /*
+                    - LE HE PUESTO NOMBRE A LOS INPUT DE LOS NÚMEROS,
+                    PARA DIFERENCIARLAS DE LOS INPUTS DE RADIO.
+                    - HE MODIFICADO LA FORMA DE ACCEDER AL VALOR ELEGIDO DEL RADIO.
+                    - HE DIFERENCIADO CON EL VALOR DEL RADIO PARA SUMAR LOS PARES
+                    O LOS IMPARES
+                 */
+            });
+        }
+    </script>
+</head>
+<body>
+    <h1>Sumar valores cajas con Random</h1>
+    <h2 style="color:blue" id="resultado"></h2>
+    <form name="formulario">
+        <input type="radio" name="seleccion" value="par" />Even
+        <input type="radio" name="seleccion" value="impar" />Odd
+        <br />
+        <input type="number" name="cajas" /><br />
+        <input type="number" name="cajas" /><br />
+        <input type="number" name="cajas" /><br />
+        <input type="number" name="cajas" /><br />
+        <button type="button" id="botonsumar">
+            Sumar cajas
+        </button>
+    </form>
+</body>
+</html>

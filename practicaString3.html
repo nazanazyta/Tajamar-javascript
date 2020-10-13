@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Practica String 3</title>
+</head>
+<body>
+    <h1>Validar ISBN</h1>
+    <label>Introduce ISBN</label>
+    <!--8441513929-->
+    <input type="text" id="caja" />
+    <button type="button" onclick="validar()">Validar</button>
+    <h2 id="resu"></h2>
+    <script type="text/javascript">
+        function validar() {
+            var numeros = document.getElementById("caja").value;
+            var resu = document.getElementById("resu");
+            var suma = 0;
+            for (var i = 0; i < numeros.length; i++) {
+                suma += parseInt(numeros.charAt(i) * (i + 1));
+            }
+            if (suma % 11 == 0) {
+                resu.innerHTML = "ISBN correcto";
+            } else {
+                resu.innerHTML = "ISBN inválido";
+            }
+        }
+    </script>
+</body>
+</html>

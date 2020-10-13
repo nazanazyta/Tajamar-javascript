@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Práctica Eventos 3</title>
+    <style>
+        img {
+            width: 200px;
+            height: 120px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Cambiar imágenes</h1>
+    <img src="img/galgo1.jpg" />
+    <img src="img/galgo1.jpg" />
+    <img src="img/galgo1.jpg" />
+    <img src="img/galgo1.jpg" />
+    <img src="img/galgo1.jpg" />
+    <script type="text/javascript">
+        window.onload = function () {
+            //var imagenes = document.getElementsByTagName("img");
+            var imagenes = document.images;
+            for (var imagen of imagenes) {
+                imagen.addEventListener("mouseover", function () {
+                    this.src = "img/galgo2.jpg";
+                });
+                imagen.onmouseout = function () {
+                    this.src = "img/galgo1.jpg";
+                }
+            }
+        }
+    </script>
+</body>
+</html>

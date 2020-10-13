@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Practica 3</title>
+</head>
+<body>
+    <h1>Sintaxis de bucles</h1>
+    <button type="button" onclick="ejecutarWhile()">Ejecutar While</button>
+    <button type="button" onclick="ejecutarFor()">Ejecutar For</button>
+    <h1 id="resul"></h1>
+    <script type="text/javascript">
+        function ejecutarWhile() {
+            var resul = document.getElementById("resul");
+            var x = 1;
+            resul.innerHTML = "Números pares: ";
+            while (x <= 20) {
+                if (x % 2 == 0) {
+                    resul.innerHTML += x + ", ";
+                    console.log(x);
+                }
+                x++;
+            }
+        }
+        function ejecutarFor() {
+            var resul = document.getElementById("resul");
+            resul.innerHTML = "Números impares: ";
+            for (var i = 1; i <= 20; i++) {
+                if (i % 2 == 1) {
+                    resul.innerHTML += i + ", ";
+                }
+            }
+        }
+    </script>
+</body>
+</html>

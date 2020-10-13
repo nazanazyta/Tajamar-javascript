@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Controles Form 2</title>
+</head>
+<body>
+    <h1>Controles Form 2</h1>
+    <form name="formulario">
+        <label>Colores favoritos</label>
+        <ul>
+            <li><input type="checkbox" value="Rojo" name="colores" />Rojo</li>
+            <li><input type="checkbox" value="Verde" name="colores" />Verde</li>
+            <li><input type="checkbox" value="Azul" name="colores" />Azul</li>
+            <li><input type="checkbox" value="Naranja" name="colores" />Naranja</li>
+        </ul>
+    </form>
+    <button type="button" onclick="colorSeleccionado()">Mostrar colores</button>
+    <h1 id="resu" style="color: purple"></h1>
+    <script type="text/javascript">
+        function colorSeleccionado() {
+            //var colores = document.getElementsByName("colores");
+            //var colores = document.forms[0].colores;
+            var colores = document.formulario.colores;
+            var aux = "";
+            for (var chk of colores) {
+                if (chk.checked) {
+                    aux += chk.value + ", ";
+                }
+            }
+            var resu = document.getElementById("resu");
+            resu.innerText = aux;
+        }
+    </script>
+</body>
+</html>

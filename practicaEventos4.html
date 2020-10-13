@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Practica 4</title>
+    <style>
+        input[type=number]:nth-of-type(odd) {
+            background: #1ef758;
+        }
+        input[type=number]:nth-of-type(even) {
+            background: #8fafb5;
+        }
+    </style>
+</head>
+<body>
+    <h1>Sumar cajas random</h1>
+    <form name="formulario">
+        <input type="radio" id="odd" name="numeros" value="odd">
+        <label>Odd</label><br />
+        <input type="radio" id="even" name="numeros" value="even">
+        <label>Even</label><br /><br />
+        <input type="number" name="caja" read /><br />
+        <input type="number" name="caja" read /><br />
+        <input type="number" name="caja" read /><br />
+        <input type="number" name="caja" read /><br /><br />
+        <button type="button" id="boton">Sumar cajas</button>
+    </form>
+    <h1 id="resu"></h1>
+    <script type="text/javascript">
+        window.onload = function () {
+            var inputs = document.getElementsByName("caja");
+            for (var input of inputs) {
+                input.value = parseInt(Math.random() * (19) + 1);
+            }
+            var boton = document.getElementById("boton")
+            boton.addEventListener("click", function () {
+                var inputs = document.getElementsByName("caja");
+                /** COLORES **/
+                /*for (var x = 0; x < inputs.length; x++) {
+                    if (x % 2 == 0) {
+                        inputs[x].style = "background: #1ef758";
+                    } else {
+                        inputs[x].style = "background: #8fafb5";
+                    }
+                }*/
+                /** SUMA **/
+                var resu = document.getElementById("resu");
+                var radio = document.formulario.numeros.value;
+                var suma = 0;
+                if (radio == "odd") {
+                    for (var i = 0; i < inputs.length; i++) {
+                        if (i % 2 == 0) {
+                            suma += parseInt(inputs[i].value);
+                        }
+                    }
+                    resu.innerText = suma;
+                } else {
+                    for (var i = 0; i < inputs.length; i++) {
+                        if (i % 2 != 0) {
+                            suma += parseInt(inputs[i].value);
+                        }
+                    }
+                    resu.innerText = suma;
+                }
+            });
+        }
+    </script>
+</body>
+</html>

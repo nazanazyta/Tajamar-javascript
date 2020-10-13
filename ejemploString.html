@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Ejemplo String</title>
+</head>
+<body>
+    <h1>Métodos clase String</h1>
+    <h2>VISUAL STUDIO .NET</h2>
+    <button type="button" onclick="ejecutar()">Ejecutar</button>
+    <div id="res"></div>
+    <script type="text/javascript">
+        function ejecutar() {
+            var texto = "VISUAL STUDIO .NET";
+            var aux = "";
+            aux += "length: " + texto.length + "<br />";
+            aux += "toLowerCase: " + texto.toLowerCase() + "<br/>";
+            aux += "indexOf('U'): " + texto.indexOf("U") + "<br/>";
+            aux += "lastIndexOf('U'): " + texto.lastIndexOf("U") + "<br/>";
+            aux += "charAt(9): " + texto.charAt(9) + "<br/>";
+            aux += "substr(2,3): " + texto.substr(2, 3) + "<br/>";
+            aux += "substring(2,3): " + texto.substring(2, 3) + "<br/>";
+            aux += "startsWith('V'): " + texto.startsWith("V") + "<br/>";
+            aux += "endsWith('T'): " + texto.endsWith("T") + "<br/>";
+            aux += "bold: " + texto.bold() + "<br />";
+            aux += "replace('U', 'X'): " + texto.replace('U', 'X') + "<br/>";
+            aux += "replace(/U/g, 'X'): " + texto.replace(/U/g, 'X') + "<br/>";
+            var res = document.getElementById("res");
+            res.innerHTML = aux;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Primer JS</title>
+    <script type="text/javascript">
+        function mostrarSaludo() {
+            //NO NOS FIAMOS SIEMPRE DE LA AYUDA DE MICROSOFT PARA JAVASCRIPT
+            console.log("Mensaje en la consola para desarrollo");
+            console.log("Otro mensaje");
+            //alert("Hola");
+
+            //05-10-2020
+            var numero = 14;
+            var texto = "Soy una variable";
+            console.log("Número: " + numero);
+            //Estamos asignando el objeto ventana a la misma variable
+            numero = window;
+            console.log("Número: " + numero);
+            numero.location.href = "https://www.google.es";
+        }
+    </script>
+</head>
+<body>
+    <h1>Primer JS</h1>
+    <button type="button" onclick="mostrarSaludo()">Pulsar para mensaje</button>
+</body>
+</html>

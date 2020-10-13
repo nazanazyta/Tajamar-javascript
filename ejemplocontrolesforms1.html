@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Controles Form 1</title>
+</head>
+<body>
+    <h1>Controles Form 1</h1>
+    <label>Deporte favorito</label>
+    <select id="deportes">
+        <option value="Petanca">Petanca</option>
+        <option value="Padel">Padel</option>
+        <option value="Futbol">Futbol</option>
+        <option value="Curling">Curling</option>
+    </select>
+    <button type="button" onclick="mostrarSeleccionado()">Mostrar deportes</button>
+    <h1 id="resu" style="color: green"></h1>
+    <script type="text/javascript">
+        function mostrarSeleccionado() {
+            var select = document.getElementById("deportes");
+            for (var opcion of select.options) {
+                if (opcion.selected) {
+                    var resu = document.getElementById("resu");
+                    resu.innerText = "Valor: " + opcion.value + ", Texto: " + opcion.innerText;
+                }
+            }
+        }
+    </script>
+</body>
+</html>

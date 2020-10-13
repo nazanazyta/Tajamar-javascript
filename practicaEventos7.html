@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Práctica 7</title>
+</head>
+<body>
+    <h1>Creación de objetos checkbox y suma</h1>
+    <form>
+        <label>Selecciona número de casillas: </label>
+        <input type="range" id="rango" min="1" max="10" />
+        <span id="valor"></span>
+    </form>
+    <div id="caja"></div>
+    <hr />
+    <h1 id="resu"></h1>
+    <script type="text/javascript">
+        window.onload = function () {
+            var rango = document.getElementById("rango");
+            rango.addEventListener("change", generarCheckbox);
+        }
+        function generarCheckbox() {
+            var suma = 0;
+            document.getElementById("caja").innerText = "";
+            var span = document.getElementById("valor");
+            span.innerText = this.value;
+            var valor = parseInt(rango.value);
+            for (var i = 0; i < valor; i++) {
+                var check = document.createElement("input");
+                check.type = "checkbox";
+                check.value = parseInt((Math.random() * 20) + 1);
+                var num = document.createElement("label");
+                num.innerText = check.value;
+                //console.log(check.value);
+                document.getElementById("caja").appendChild(check);
+                document.getElementById("caja").appendChild(num);
+                check.addEventListener("click", function () {
+                    console.log(this.value);
+                    if (this.checked) {
+                        suma += parseInt(this.value);
+                        console.log(suma);
+                    } else {
+                        suma -= parseInt(this.value);
+                        console.log(suma);
+                    }
+                     document.getElementById("resu").innerText = suma;
+                });
+            }
+        }
+    </script>
+</body>
+</html>

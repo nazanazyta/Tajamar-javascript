@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Segundo JS</title>
+</head>
+<body>
+    <h1>Sumar números</h1>
+    <label>Número 1</label>
+    <input type="number" id="caja1" />
+    <br />
+    <label>Número 2</label>
+    <input type="number" id="caja2" />
+    <br />
+    <button type="button" onclick="sumar()">Sumar números</button>
+    <h1 id="resultado"></h1>
+    <hr />
+    <h1>Cambiar fotos</h1>
+    <!--<img src="img/galgo1.jpg" id="img" onmouseover="cambiarImg()" style="width: 200px; height: 120px" />-->
+    <img src="img/galgo1.jpg" id="img" onmouseover="cambiarImg(this)" style="width: 200px; height: 120px" />
+    <img src="img/galgo1.jpg" id="img" onmouseover="cambiarImg(this)" style="width: 200px; height: 120px" />
+    <hr />
+    <h1>Switch</h1>
+    <label>Número 1-4:</label>
+    <input type="number" id="caja" />
+    <button type="button" onclick="evaluar()">Evaluar</button>
+    <h1 id="resulSwitch"></h1>
+    <h1 id="resulIf"></h1>
+    <script type="text/javascript">
+        function sumar() {
+            var num1, num2, suma, resul;
+            //innerText y value SIEMPRE son string
+            //hay que convertir: parseInt(valor) o parseFloat(valor)
+            num1 = parseInt(document.getElementById("caja1").value);
+            num2 = parseInt(document.getElementById("caja2").value);
+            resul = document.getElementById("resultado");
+            suma = num1 + num2;
+            resul.innerHTML = suma;
+        }
+        /*function cambiarImg() {
+            var img = document.images[0];
+            img.src = "img/galgo2.jpg";
+        }*/
+        function cambiarImg(img) {
+            //var img = document.images[0];
+            img.src = "img/galgo2.jpg";
+        }
+        function evaluar() {
+            var num = parseInt(document.getElementById("caja").value);
+            var resulSw = document.getElementById("resulSwitch");
+            var resulIf = document.getElementById("resulIf");
+            switch (num) {
+                case 1:
+                    resulSw.innerText = "VERANO";
+                    break;
+                case 2:
+                    resulSw.innerText = "OTOÑO";
+                    break;
+                case 3:
+                    resulSw.innerText = "INVIERNO";
+                    break;
+                case 4:
+                    resulSw.innerText = "PRIMAVERA";
+                    break;
+                default:
+                    resulSw.innerText = "NO HAY ESTACIONES";
+            }
+            if (num == 4) {
+                resulIf.innerText = "VERANO";
+            } else if (num == 3) {
+                resulIf.innerText = "OTOÑO";
+            } else if (num == 2) {
+                resulIf.innerText = "INVIERNO";
+            } else if (num == 1) {
+                resulIf.innerText = "PRIMAVERA";
+            } else {
+                resulIf.innerText = "NO HAY ESTACIONES";
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Practica 1</title>
+</head>
+<body>
+    <h1>Averiguar día de la semana</h1>
+    <label>Día: </label>
+    <input type="number" id="dia" />
+    <br />
+    <label>Mes: </label>
+    <input type="number" id="mes" />
+    <br />
+    <label>Año: </label>
+    <input type="number" id="year" />
+    <br />
+    <button type="button" onclick="comprobar()">Mostrar día de la semana</button>
+    <h1 id="res"></h1>
+    <script type="text/javascript">
+        function comprobar() {
+            var dia, mes, year, total, res;
+            dia = parseInt(document.getElementById("dia").value);
+            mes = parseInt(document.getElementById("mes").value);
+            year = parseInt(document.getElementById("year").value);
+            res = document.getElementById("res");
+            if (mes == 1){
+                mes = 13;
+                year -= 1;
+            }
+            if (mes == 2) {
+                mes = 14;
+                year--;
+            }
+            total = parseInt(dia + (mes * 2) + year + (((mes + 1) * 3) / 5) + (year / 4) - (year / 100) + (year / 400) + 2);
+            console.log(total);
+            var tot = parseInt(total / 7);
+            total = parseInt(total - tot * 7);
+            console.log(total);
+            /*var paso1 = parseInt(((mes + 1) * 3) / 5);
+            console.log(paso1);
+            var paso2 = parseInt(year/4);
+            console.log(paso2);
+            var paso3 = parseInt(year/100);
+            console.log(paso3);
+            var paso4 = parseInt(year/400);
+            console.log(paso4);
+            var paso5 = parseInt(dia + (mes * 2) + year + paso1 + paso2 - paso3 + paso4 + 2);
+            console.log(paso5);
+            var paso6 = parseInt(paso5 / 7);
+            console.log(paso6);
+            var paso7 = parseInt(paso5 - (paso6 * 7));
+            console.log(paso7);*/
+            switch (total) {
+                case 0:
+                    res.innerText = "Sábado"; break;
+                case 1:
+                    res.innerText = "Domingo"; break;
+                case 2:
+                    res.innerText = "Lunes"; break;
+                case 3:
+                    res.innerText = "Martes"; break;
+                case 4:
+                    res.innerText = "Miércoles"; break;
+                case 5:
+                    res.innerText = "Jueves"; break;
+                case 6:
+                    res.innerText = "Viernes"; break;
+                default:
+                    res.innerText = "Mal";
+            }
+        }
+    </script>
+</body>
+</html>
